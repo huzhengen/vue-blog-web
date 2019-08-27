@@ -3,6 +3,9 @@ import Router from 'vue-router'
 
 const Index = () => import('../components/Index')
 const Article = () => import('../components/Article')
+const Login = () => import('../components/Login')
+const Register = () => import('../components/Register')
+
 
 Vue.use(Router)
 
@@ -15,6 +18,14 @@ const router = new Router({
         {
             path: '/article',
             component: Article,
+        },
+        {
+            path: '/login',
+            component: Login,
+        },
+        {
+            path: '/register',
+            component: Register,
         },
     ]
 })
