@@ -4,9 +4,15 @@
             <router-link to="/">Blog</router-link>
         </h1>
         <template v-if="isLogin">
-        	<div>
-        		<i class="el-icon-user-solid"></i>{{user.username}}
-        	</div>
+            <el-dropdown>
+                <span class="el-dropdown-link">
+                    <i class="el-icon-user-solid"></i>{{user.username}}<i class="el-icon-arrow-down el-icon--right"></i>
+                </span>
+                <el-dropdown-menu slot="dropdown">
+                    <el-dropdown-item>查看自己所有博客</el-dropdown-item>
+                    <el-dropdown-item @click.native="logout">注销</el-dropdown-item>
+                </el-dropdown-menu>
+            </el-dropdown>
         </template>
         <template v-else>
             <div class="loginAndRegister">
@@ -41,8 +47,8 @@ export default {
     created() {
         this.checkLogin();
     },
-    methods:{
-    	...mapActions(['checkLogin'])
+    methods: {
+        ...mapActions(['checkLogin', 'logout']),
     }
 }
 </script>
@@ -57,6 +63,13 @@ export default {
 
     >h1>a {
         text-decoration: none;
+    }
+
+    .el-dropdown-link {
+        cursor: pointer;
+    }
+
+    .el-icon-arrow-down {
     }
 
     .loginAndRegister a:first-child {

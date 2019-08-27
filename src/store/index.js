@@ -34,14 +34,17 @@ const actions = {
 	},
 
 	async register({ commit }, { username, password }) {
-		let res = await auth.register({ username, password })
+		// let res = await auth.register({ username, password })
+		let res = await request('/users/register', 'post', {username, password})
 		commit('setUser', { user: res.data })
 		commit('setLogin', { isLogin: true })
 		return res.data
 	},
 
 	async logout({ commit }) {
-		await auth.logout()
+		console.log('loogout')
+		// await auth.logout()
+		await request('/users/logout', 'get')
 		commit('setUser', { user: null })
 		commit('setLogin', { isLogin: false })
 	},
