@@ -12,7 +12,7 @@
     </div>
 </template>
 <script>
-import request from '../helper/request'
+import { mapActions } from 'vuex'
 export default {
     name: 'Login',
     data() {
@@ -34,10 +34,11 @@ export default {
         }
     },
     methods: {
+        ...mapActions(['login']),
         onSubmit() {
             let username = this.ruleForm.username;
             let password = this.ruleForm.password;
-            request('/users/login', 'post', { username, password }).then(res => {
+            this.login({ username, password }).then(() => {
                 this.$router.push({ path: this.$route.query.redirect || '/' })
             })
         }
