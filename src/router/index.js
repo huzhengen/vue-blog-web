@@ -6,7 +6,7 @@ const Article = () => import('../components/Article')
 const Login = () => import('../components/Login')
 const Register = () => import('../components/Register')
 const Create = () => import('../components/Create')
-
+const MyBlogs = () => import('../components/MyBlogs')
 
 Vue.use(Router)
 
@@ -19,6 +19,10 @@ const router = new Router({
         {
             path: '/blog/:blogId',
             component: Article,
+        },
+        {
+            path: '/user/:userId',
+            component: MyBlogs,
         },
         {
             path: '/login',
