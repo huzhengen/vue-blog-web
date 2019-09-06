@@ -52,9 +52,9 @@ const actions = {
 	async checkLogin({ commit, state }) {
 		if (state.isLogin) return true
 		// let res = await auth.getInfo()
-		let res = await request('/users', 'get')
+		let res = await request('/users', 'get') // get接口/users，是获取session的user，存在返回true，不存在返回false
 		console.log(res)
-		commit('setLogin', { isLogin: res.isLogin })
+		commit('setLogin', { isLogin: res.isLogin }) // 如果返回的是false，store里的isLogin就设置为了false。
 		if (!res.isLogin) return false
 		commit('setUser', { user: res.data })
 		return true
