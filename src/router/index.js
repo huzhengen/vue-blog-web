@@ -5,6 +5,7 @@ const Index = () => import('../components/Index')
 const Article = () => import('../components/Article')
 const Login = () => import('../components/Login')
 const Register = () => import('../components/Register')
+const Create = () => import('../components/Create')
 
 
 Vue.use(Router)
@@ -16,7 +17,7 @@ const router = new Router({
             component: Index,
         },
         {
-            path: '/article',
+            path: '/blog/:blogId',
             component: Article,
         },
         {
@@ -26,6 +27,10 @@ const router = new Router({
         {
             path: '/register',
             component: Register,
+        },
+        {
+            path: '/create',
+            component: Create,
         },
     ]
 })
